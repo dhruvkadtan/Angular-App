@@ -1,0 +1,25 @@
+<label id="filterLabel">Filter by:</label> <br>
+<input type="text" id="filter" [(ngModel)]='nameFilter'/> <br>
+<label id="countLabel">Total Number of Employees: </label>
+<label id="count">{{filterData.count}}</label>
+
+<table id="empList">
+    <tr id="headRow">
+        <th id="idHead">Emp ID</th>
+        <th id="nameHead">Name</th>
+        <th id="locHead">Location</th>
+        <th id="emailHead">Email</th>
+        <th id="mobileHead">Mobile</th>
+        <th id="editHead">Edit</th>
+        <th id="deleteHead">Delete</th>
+    </tr>
+    <tr id="dataRow" *ngFor = "let e of employees | employeeFilter : nameFilter">
+       <td id="idData"><nav id="detailsNav"><a id="details" [routerLink]="['../details']" [state]="e" routerLinkActive="active">{{e.id}}</a></nav></td>
+       <td id="nameData">{{e.name}}</td>
+       <td id="locData">{{e.location}}</td>
+       <td id="emailData">{{e.email}}</td>
+       <td id="mobileData">{{e.mobile}}</td>
+       <td id="editData"><nav id="editNav"><a id="edit" [routerLink]="['../editEmployee']" [state]="e" routerLinkActive="active"><button>Edit{{e.id}}</button></a></nav></td>
+       <td id="deleteData"><button id="deleteEmpButton" (click)="deleteEmp(e.id)">Delete{{e.id}}</button></td>
+    </tr>
+</table>

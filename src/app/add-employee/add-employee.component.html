@@ -1,0 +1,33 @@
+<h2 id="addHead">Add Employee</h2>
+<form id="addForm"  [formGroup]="formGrp" novalidate>
+    <label id="addNameLabel">Employee Name:</label>
+    <input id="addName" class="add-form-style" type="text" formControlName="namectrl" [(ngModel)]="name">
+    <div *ngIf="mobno['namectrl'].touched && mobno['namectrl'].invalid" id="addNameError" class="show-error">
+        <div id="addNameReq" *ngIf="mobno['namectrl'].errors?.['required'] && mobno['namectrl'].dirty">Please Enter Employee Name</div>
+        <div id="addNameVal" *ngIf="mobno['namectrl'].errors?.['pattern'] && mobno['namectrl'].dirty">Employee Name Should be more than 3 characters</div>
+    </div> 
+    <br>
+    <label id="addLocationLabel">Location:</label>
+    <select id="addLocation" class="add-form-style" name="location" (change)="onLocationChange($event)"  required>
+        <option id="addLocationValues" *ngFor="let l of lc" [value]="l">
+            {{l}}
+        </option>
+    </select> <br>
+
+    <label id="addEmailLabel">Email:</label>
+    <input id="addEmail" class="add-form-style" type="text" formControlName="emailctrl" [(ngModel)]="email">
+        <div *ngIf="mobno['emailctrl'].touched && mobno['emailctrl'].invalid" id="addEmailError" class="show-error">
+            <div id="addEmailReq" *ngIf="mobno['emailctrl'].errors?.['required'] && mobno['emailctrl'].dirty">Please Enter Email Id</div>
+            <div id="addEmailVal" *ngIf="mobno['emailctrl'].errors?.['pattern'] && mobno['emailctrl'].dirty">Enter Valid Email id</div>
+        </div> 
+    
+    <br>
+    <label id="addMobileLabel">Mobile:</label>
+    <input id="addMobile" class="add-form-style" type="text" formControlName="mobctrl" [(ngModel)]="mobileNumber">
+        <div *ngIf="mobno['mobctrl'].touched && mobno['mobctrl'].invalid" id="addMobileError" class="show-error">
+            <div id="addMobReq" *ngIf="mobno['mobctrl'].errors?.['required'] && mobno['mobctrl'].dirty">Please Enter Mobile Number</div>
+            <div id="addMobVal" *ngIf="mobno['mobctrl'].errors?.['pattern'] && mobno['mobctrl'].dirty">Please Enter 10 Digit Mobile Number</div>
+        </div> 
+    <br>
+    <button id="addButton" type="submit" [disabled]="!formGrp.valid" (click)="doSubmit()">Submit</button>
+</form>

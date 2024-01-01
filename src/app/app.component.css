@@ -1,0 +1,13 @@
+a {
+    padding-right: 10px;
+}
+
+a.active {
+    color:blue;
+    font-weight: bold;
+}
+
+.nav-ele {
+    font-size: large;
+    margin-bottom: 20px;
+}
